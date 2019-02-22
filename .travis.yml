@@ -21,3 +21,16 @@ after_success:
   - docker push brksdeadpool/fib-nginx
   - docker push brksdeadpool/fib-server
   - docker push brksdeadpool/fib-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: sa-east-1
+  app: docker-fib
+  env: DockerFib-env
+  bucket_name: elasticbeanstalk-sa-east-1-480162803178
+  bucket_path: fib
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
