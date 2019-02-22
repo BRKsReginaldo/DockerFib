@@ -5,6 +5,7 @@ services:
 before_install:
   - docker build -t brksdeadpool/react-test -f ./client/Dockerfile.dev ./client
 
+
 script:
   - docker run brksdeadpool/react-test npm test -- --coverage
 
